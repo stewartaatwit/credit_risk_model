@@ -1,39 +1,23 @@
-<<<<<<< HEAD
 # -*- coding: utf-8 -*-
 """
 Created on Wed Oct 14 18:21:12 2026
 
 @author: ataly
 """
-#starting off small
+
+# Starting off small
 def debt_income_ratio(monthly_debt_payments, monthly_income):
-    if(monthly_debt_payments == 0 or monthly_income == 0):
-        return ZeroDivisionError()
+    if monthly_income <= 0:
+        raise ValueError("Monthly income must be greater than zero.")
     
-    return (monthly_debt_payments/monthly_income )*100
-
+    if monthly_debt_payments < 0:
+        raise ValueError("Debt payments cannot be negative.")
     
-
-user_income = int(input('Enter your monthly income:'))
-user_debt = int(input('Enter your debt:'))
-r= debt_income_ratio(user_debt, user_income)
-print(f"Debt-to-income ratio: {r}%")
+    return (monthly_debt_payments / monthly_income) * 100
 
 
-=======
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Oct 14 18:21:12 2026
+user_income = int(input("Enter your monthly income: "))
+user_debt = int(input("Enter your monthly debt payments: "))
 
-@author: ataly
-"""
-#starting off small
-monthly_income = 4000
-monthly_debt_payments= 1200
-
-debt_income_ratio = (monthly_debt_payments/monthly_income )*100
-
-print(f"Debt-to-income ratio: {debt_income_ratio}%")
-
-
->>>>>>> fb164e2a2534ba15c9010afcedb5fdab088bfe55
+r = debt_income_ratio(user_debt, user_income)
+print(f"Debt-to-income ratio: {r:.1f}%")
